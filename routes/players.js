@@ -3,18 +3,23 @@ var router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
+
+  //const start_ms = new Date().getTime();
+
   const uri = "mongodb+srv://taira:Guitenn1126@youbase-cluster.pigam.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
   client.connect(err => {
-    console.log(req.params.playerCode)
+    //console.log(req.params.playerCode)
     client.db("central_batter_2020").collection("player_detail").find().toArray(function (err, docs) {
       res.json(docs)
       client.close();
     });
   })
 
+  // const elapsed_ms = new Date().getTime() - start_ms;
+  // console.log('処理時間aa：' + elapsed_ms, start_ms);
 });
 
 
