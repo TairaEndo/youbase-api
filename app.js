@@ -27,7 +27,8 @@ app.use('/players', playersRouter);
 app.use('/ranking', rankingRouter)
 
 // 3000ポートで受信
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 3000;
+const port = 3000;
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
